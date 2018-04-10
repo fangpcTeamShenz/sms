@@ -9,7 +9,6 @@
   <name>smsBase</name>
   <url>http://maven.apache.org</url>
 
-
   <properties>
     <!-- 基础设置 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

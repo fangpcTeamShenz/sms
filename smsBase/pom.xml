@@ -10,7 +10,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <!-- 基础设置 -->
+    <!-- 基础设置  -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.locales>zh_CN</project.build.locales>
 		<project.build.jdk>1.8</project.build.jdk>

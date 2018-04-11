@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.SmsSignatureMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.SmsSignature" >
+    <id column="sms_signature_id" property="smsSignatureId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="signature_type" property="signatureType" jdbcType="INTEGER" />
+    <result column="product_type" property="productType" jdbcType="INTEGER" />
+    <result column="sign_content" property="signContent" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="picture_url" property="pictureUrl" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sms_signature_id, user_id, signature_type, product_type, sign_content, status, reason, 
+    create_time, picture_url, memo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sms_signature
+    where sms_signature_id = #{smsSignatureId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sms_signature
+    where sms_signature_id = #{smsSignatureId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.SmsSignature" >
+    insert into t_sms_signature (sms_signature_id, user_id, signature_type, 
+      product_type, sign_content, status, 
+      reason, create_time, picture_url, 
+      memo)
+    values (#{smsSignatureId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{signatureType,jdbcType=INTEGER}, 
+      #{productType,jdbcType=INTEGER}, #{signContent,jdbcType=CHAR}, #{status,jdbcType=INTEGER}, 
+      #{reason,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{pictureUrl,jdbcType=VARCHAR}, 
+      #{memo,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.SmsSignature" >
+    insert into t_sms_signature
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="smsSignatureId != null" >
+        sms_signature_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="signatureType != null" >
+        signature_type,
+      </if>
+      <if test="productType != null" >
+        product_type,
+      </if>
+      <if test="signContent != null" >
+        sign_content,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="pictureUrl != null" >
+        picture_url,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="smsSignatureId != null" >
+        #{smsSignatureId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="signatureType != null" >
+        #{signatureType,jdbcType=INTEGER},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="signContent != null" >
+        #{signContent,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pictureUrl != null" >
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.SmsSignature" >
+    update t_sms_signature
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="signatureType != null" >
+        signature_type = #{signatureType,jdbcType=INTEGER},
+      </if>
+      <if test="productType != null" >
+        product_type = #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="signContent != null" >
+        sign_content = #{signContent,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pictureUrl != null" >
+        picture_url = #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=CHAR},
+      </if>
+    </set>
+    where sms_signature_id = #{smsSignatureId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.SmsSignature" >
+    update t_sms_signature
+    set user_id = #{userId,jdbcType=BIGINT},
+      signature_type = #{signatureType,jdbcType=INTEGER},
+      product_type = #{productType,jdbcType=INTEGER},
+      sign_content = #{signContent,jdbcType=CHAR},
+      status = #{status,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      picture_url = #{pictureUrl,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=CHAR}
+    where sms_signature_id = #{smsSignatureId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectList" resultMap="BaseResultMap" parameterType="map">
+    select
+    	<include refid="Base_Column_List" />
+    from t_sms_signature 
+    <where>
+ 	    <if test="status != null" >
+    		and status = #{status,jdbcType=INTEGER}
+    	</if>
+    </where>
+    ORDER BY sms_signature_id DESC
+  </select>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+      s.sms_signature_id as smsSignatureId,s.user_id as userId,u.username,u.nickname,
+      f_property('business.smsSignature.signatureType',s.signature_type) as signatureType,
+      f_property('business.smsSignature.status',s.status) as status,
+      s.sign_content as signContent,s.reason,s.memo,s.picture_url as pictureUrl,
+      DATE_FORMAT(s.create_time, '%Y-%m-%d %H:%i:%s') createTime
+    FROM
+      t_sms_signature s
+      left join t_user u on s.user_id = u.user_id
+	<where>
+      <if test="userId != null">
+        AND s.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="signatureType != null">
+        AND s.signature_type = #{signatureType,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND s.status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="signContent != null">
+        AND s.sign_content like CONCAT('%', #{signContent,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="username != null">
+        AND u.username like CONCAT('%', #{username,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="1 == 1">
+      	and s.status <![CDATA[ <> ]]> -1
+      </if>
+     </where>
+    ORDER BY s.sms_signature_id DESC
+  </select>
+  
+  <select id="selectBySelective" parameterType="map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    	from t_sms_signature
+    	<where>
+		      <if test="model.userId != null" >
+		        and user_id = #{model.userId,jdbcType=BIGINT}
+		      </if>
+		      <if test="model.signatureType != null" >
+		        and signature_type = #{model.signatureType,jdbcType=INTEGER}
+		      </if>
+		      <if test="model.productType != null" >
+		        and product_type = #{model.productType,jdbcType=INTEGER}
+		      </if>
+		      <if test="model.signContent != null" >
+		        and sign_content = #{model.signContent,jdbcType=CHAR}
+		      </if>
+		      <if test="model.status != null" >
+		        and status = #{model.status,jdbcType=INTEGER}
+		      </if>
+		      <if test="model.reason != null" >
+		        and reason = #{model.reason,jdbcType=CHAR}
+		      </if>
+		      <if test="model.createTime != null" >
+		        and create_time = #{model.createTime,jdbcType=TIMESTAMP}
+		      </if>
+		      <if test="model.pictureUrl != null" >
+		        and picture_url = #{model.pictureUrl,jdbcType=VARCHAR}
+		      </if>
+		      <if test="model.memo != null" >
+		        and memo = #{model.memo,jdbcType=CHAR}
+		      </if>
+    	</where>
+    	order by sms_signature_id desc
+  </select>
+</mapper>

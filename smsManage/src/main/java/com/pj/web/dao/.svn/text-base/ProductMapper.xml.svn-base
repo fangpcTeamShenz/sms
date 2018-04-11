@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.Product" >
+    <id column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="product_name" property="productName" jdbcType="CHAR" />
+    <result column="product_type" property="productType" jdbcType="TINYINT" />
+    <result column="isp_code" property="ispCode" jdbcType="INTEGER" />
+    <result column="province" property="province" jdbcType="CHAR" />
+    <result column="memo" property="memo" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    product_id, product_name, product_type, isp_code, province, memo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+    where product_id = #{productId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_product
+    where product_id = #{productId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.Product" >
+    insert into t_product (product_id, product_name, product_type, 
+      isp_code, province, memo)
+    values (#{productId,jdbcType=BIGINT}, #{productName,jdbcType=CHAR}, #{productType,jdbcType=TINYINT}, 
+      #{ispCode,jdbcType=INTEGER}, #{province,jdbcType=CHAR}, #{memo,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.Product" >
+    insert into t_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="productType != null" >
+        product_type,
+      </if>
+      <if test="ispCode != null" >
+        isp_code,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=CHAR},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=TINYINT},
+      </if>
+      <if test="ispCode != null" >
+        #{ispCode,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=CHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.Product" >
+    update t_product
+    <set >
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=CHAR},
+      </if>
+      <if test="productType != null" >
+        product_type = #{productType,jdbcType=TINYINT},
+      </if>
+      <if test="ispCode != null" >
+        isp_code = #{ispCode,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=CHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=CHAR},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.Product" >
+    update t_product
+    set product_name = #{productName,jdbcType=CHAR},
+      product_type = #{productType,jdbcType=TINYINT},
+      isp_code = #{ispCode,jdbcType=INTEGER},
+      province = #{province,jdbcType=CHAR},
+      memo = #{memo,jdbcType=CHAR}
+    where product_id = #{productId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectList" resultMap="BaseResultMap" parameterType="map">
+    select
+    	<include refid="Base_Column_List" />
+    from t_product 
+    <where>
+     <if test="productName != null" >
+        and product_name = #{model.productName,jdbcType=CHAR}
+      </if>
+    </where>
+    ORDER BY product_id DESC
+  </select>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+    	t.product_id as productId, t.product_name as productName, 
+    	t.product_type as productType, t.isp_code as ispCode, t.province, t.memo
+    FROM
+      t_product t
+	<where>
+	  <if test="productName != null">
+        AND t.product_name like CONCAT('%', #{productName,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="productType != null">
+        AND t.product_type = #{productType,jdbcType=INTEGER}
+      </if>
+      <if test="ispCode != null">
+        AND t.isp_code = #{ispCode,jdbcType=INTEGER}
+      </if>
+     </where>
+    ORDER BY t.product_name,t.product_id DESC
+  </select>
+  
+  <select id="selectBySelective" parameterType="map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    	from t_product
+    	<where>
+    		  <if test="model.productName != null" >
+		        and product_name = #{model.productName,jdbcType=CHAR}
+		      </if>
+		      <if test="model.productType != null" >
+		        and product_type = #{model.productType,jdbcType=TINYINT}
+		      </if>
+		      <if test="model.ispCode != null" >
+		        and isp_code = #{model.ispCode,jdbcType=INTEGER}
+		      </if>
+		      <if test="model.province != null" >
+		        and province = #{model.province,jdbcType=CHAR}
+		      </if>
+		      <if test="model.memo != null" >
+		        and memo = #{model.memo,jdbcType=CHAR}
+		      </if>
+    	</where>
+    	order by product_id desc
+  </select>
+  
+</mapper>

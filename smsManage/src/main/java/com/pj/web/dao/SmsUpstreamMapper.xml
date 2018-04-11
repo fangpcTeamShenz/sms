@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.SmsUpstreamMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.SmsUpstream" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="module_id" property="moduleId" jdbcType="BIGINT" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
+    <result column="receive_time" property="receiveTime" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, module_id, message, receive_time, phone, number, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sms_upstream
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sms_upstream
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.SmsUpstream" >
+    insert into t_sms_upstream (id, user_id, module_id, 
+      message, receive_time, phone, 
+      number, create_time)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{moduleId,jdbcType=BIGINT}, 
+      #{message,jdbcType=VARCHAR}, #{receiveTime,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{number,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.SmsUpstream" >
+    insert into t_sms_upstream
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="moduleId != null" >
+        module_id,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="receiveTime != null" >
+        receive_time,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="moduleId != null" >
+        #{moduleId,jdbcType=BIGINT},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTime != null" >
+        #{receiveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.SmsUpstream" >
+    update t_sms_upstream
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="moduleId != null" >
+        module_id = #{moduleId,jdbcType=BIGINT},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTime != null" >
+        receive_time = #{receiveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.SmsUpstream" >
+    update t_sms_upstream
+    set user_id = #{userId,jdbcType=BIGINT},
+      module_id = #{moduleId,jdbcType=BIGINT},
+      message = #{message,jdbcType=VARCHAR},
+      receive_time = #{receiveTime,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      number = #{number,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+    	up.id, up.user_id, up.module_id, up.message, 
+    	up.receive_time as receiveTime,u.nickname,
+        up.phone, up.number, DATE_FORMAT(up.create_time, '%Y-%m-%d %H:%i:%s') as createTime , u.username
+    FROM
+      t_sms_upstream up
+      left join t_user u on up.user_id = u.user_id
+	<where>
+	  <if test="phone != null">
+          AND up.phone = #{phone,jdbcType=CHAR}
+      </if>
+      <if test="number != null">
+          AND up.number = #{number,jdbcType=CHAR}
+      </if>
+      <if test="userId != null">
+          AND up.user_id = #{userId,jdbcType=INTEGER}
+      </if>
+      <if test="receiveTimeBegin != null" >
+		  AND up.receive_time <![CDATA[ >= ]]> str_to_date(concat(#{receiveTimeBegin,jdbcType=VARCHAR}, ' 00:00:00'), '%Y-%m-%d %H:%i:%S')
+	  </if>
+	  <if test="receiveTimeEnd != null" >
+		  AND up.receive_time <![CDATA[ < ]]> str_to_date(concat(#{receiveTimeEnd,jdbcType=VARCHAR}, ' 23:59:59'), '%Y-%m-%d %H:%i:%S')
+	  </if>
+     </where>
+    ORDER BY up.id DESC
+  </select>
+</mapper>

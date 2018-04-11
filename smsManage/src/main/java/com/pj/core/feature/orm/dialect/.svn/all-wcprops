@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/dialect
+END
+MySql5PageHepler.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/dialect/MySql5PageHepler.java
+END
+Dialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/dialect/Dialect.java
+END
+DialectFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/dialect/DialectFactory.java
+END
+MySql5Dialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/dialect/MySql5Dialect.java
+END

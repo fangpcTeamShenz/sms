@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/JAVA/!svn/ver/15515/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/mybatis
+END
+PaginationStatementHandlerInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/mybatis/PaginationStatementHandlerInterceptor.java
+END
+Page.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/mybatis/Page.java
+END
+PaginationResultSetHandlerInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/mybatis/PaginationResultSetHandlerInterceptor.java
+END
+ShardTableInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/JAVA/!svn/ver/15515/smsPlatform/smsPj/smsManage/src/main/java/com/pj/core/feature/orm/mybatis/ShardTableInterceptor.java
+END

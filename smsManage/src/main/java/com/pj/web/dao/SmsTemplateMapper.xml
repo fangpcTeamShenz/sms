@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.SmsTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.SmsTemplate" >
+    <id column="sms_template_id" property="smsTemplateId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="template_name" property="templateName" jdbcType="CHAR" />
+    <result column="template_content" property="templateContent" jdbcType="VARCHAR" />
+    <result column="product_type" property="productType" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="CHAR" />
+    <result column="memo" property="memo" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sms_template_id, user_id, template_name, template_content, product_type, status, 
+    reason, memo, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sms_template
+    where sms_template_id = #{smsTemplateId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sms_template
+    where sms_template_id = #{smsTemplateId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.SmsTemplate" >
+    insert into t_sms_template (sms_template_id, user_id, template_name, 
+      template_content, product_type, status, 
+      reason, memo, create_time
+      )
+    values (#{smsTemplateId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{templateName,jdbcType=CHAR}, 
+      #{templateContent,jdbcType=VARCHAR}, #{productType,jdbcType=TINYINT}, #{status,jdbcType=INTEGER}, 
+      #{reason,jdbcType=CHAR}, #{memo,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.SmsTemplate" >
+    insert into t_sms_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="smsTemplateId != null" >
+        sms_template_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="templateName != null" >
+        template_name,
+      </if>
+      <if test="templateContent != null" >
+        template_content,
+      </if>
+      <if test="productType != null" >
+        product_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="smsTemplateId != null" >
+        #{smsTemplateId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="templateName != null" >
+        #{templateName,jdbcType=CHAR},
+      </if>
+      <if test="templateContent != null" >
+        #{templateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=CHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.SmsTemplate" >
+    update t_sms_template
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="templateName != null" >
+        template_name = #{templateName,jdbcType=CHAR},
+      </if>
+      <if test="templateContent != null" >
+        template_content = #{templateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        product_type = #{productType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=CHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where sms_template_id = #{smsTemplateId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.SmsTemplate" >
+    update t_sms_template
+    set user_id = #{userId,jdbcType=BIGINT},
+      template_name = #{templateName,jdbcType=CHAR},
+      template_content = #{templateContent,jdbcType=VARCHAR},
+      product_type = #{productType,jdbcType=TINYINT},
+      status = #{status,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=CHAR},
+      memo = #{memo,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where sms_template_id = #{smsTemplateId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectList" resultMap="BaseResultMap" parameterType="map">
+    select
+    	<include refid="Base_Column_List" />
+    from t_sms_template 
+    <where>
+    	<if test="status != null" >
+    		and status = #{status,jdbcType=INTEGER}
+    	</if>
+    </where>
+    ORDER BY sms_template_id DESC
+  </select>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+      t.sms_template_id as smsTemplateId,t.user_id as userId,
+      t.template_name as templateName,t.template_content as templateContent,
+      t.product_type as productType,t.status,t.reason,t.memo,u.username,u.nickname,
+      DATE_FORMAT(t.create_time, '%Y-%m-%d %H:%i:%s') createTime
+    FROM
+      t_sms_template t
+      left join t_user u on t.user_id = u.user_id
+	<where>
+	  <if test="username != null">
+        AND u.username like CONCAT('%', #{username,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="userId != null">
+        AND t.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="productType != null">
+        AND t.product_type = #{productType,jdbcType=TINYINT}
+      </if>
+      <if test="status != null">
+        AND t.status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="templateName != null">
+        AND t.template_name like CONCAT('%', #{templateName,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="templateContent != null">
+        AND t.template_content like CONCAT('%', #{templateContent,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="1 == 1">
+        AND t.status <![CDATA[<>]]> -1
+      </if>
+     </where>
+    ORDER BY t.sms_template_id DESC
+  </select>
+  
+  <select id="selectBySelective" parameterType="map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    	from t_sms_template
+    	<where>
+		      <if test="model.userId != null" >
+		        and user_id = #{model.userId,jdbcType=BIGINT}
+		      </if>
+		      <if test="model.templateName != null" >
+		        and template_name = #{model.templateName,jdbcType=CHAR}
+		      </if>
+		      <if test="model.templateContent != null" >
+		        and template_content = #{model.templateContent,jdbcType=VARCHAR}
+		      </if>
+		      <if test="model.productType != null" >
+		        and product_type = #{model.productType,jdbcType=TINYINT}
+		      </if>
+		      <if test="model.status != null" >
+		        and status = #{model.status,jdbcType=INTEGER}
+		      </if>
+		      <if test="model.reason != null" >
+		        and reason = #{model.reason,jdbcType=CHAR}
+		      </if>
+		      <if test="model.memo != null" >
+		        and memo = #{model.memo,jdbcType=CHAR}
+		      </if>
+		      <if test="model.createTime != null" >
+		        and create_time = #{model.createTime,jdbcType=TIMESTAMP}
+		      </if>
+    	</where>
+    	order by sms_template_id desc
+  </select>
+</mapper>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.PropertyMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.Property" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="parent_path" property="parentPath" jdbcType="VARCHAR" />
+    <result column="property_name" property="propertyName" jdbcType="VARCHAR" />
+    <result column="property_key" property="propertyKey" jdbcType="VARCHAR" />
+    <result column="property_value" property="propertyValue" jdbcType="VARCHAR" />
+    <result column="property_index" property="propertyIndex" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="disable" property="disable" jdbcType="INTEGER" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parent_path, property_name, property_key, property_value, property_index, status,disable,
+    memo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_property
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_property
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.pj.web.model.Property" useGeneratedKeys="true" keyProperty="id">
+    insert into t_property
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentPath != null" >
+        parent_path,
+      </if>
+      <if test="propertyName != null" >
+        property_name,
+      </if>
+      <if test="propertyKey != null" >
+        property_key,
+      </if>
+      <if test="propertyValue != null" >
+        property_value,
+      </if>
+      <if test="propertyIndex != null" >
+        property_index,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="disable != null" >
+        disable,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentPath != null" >
+        #{parentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyName != null" >
+        #{propertyName,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyKey != null" >
+        #{propertyKey,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyValue != null" >
+        #{propertyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyIndex != null" >
+        #{propertyIndex,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="disable != null" >
+        #{disable,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.Property" >
+    update t_property
+    <set >
+      <if test="parentPath != null" >
+        parent_path = #{parentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyName != null" >
+        property_name = #{propertyName,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyKey != null" >
+        property_key = #{propertyKey,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyValue != null" >
+        property_value = #{propertyValue,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyIndex != null" >
+        property_index = #{propertyIndex,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="disable != null" >
+        disable = #{disable,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByPageList" resultType="map" parameterType="map">
+    select id, f_property('business.property.disable',disable) as disable,
+    parent_path as parentPath, property_name as propertyName, 
+    	property_key as propertyKey, 
+      property_value as propertyValue, property_index as propertyIndex, status,disable, memo
+    from t_property
+    <where>
+      <if test="status != null">
+        and status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="disable != null">
+        and disable = #{disable,jdbcType=INTEGER}
+      </if>
+      <choose>
+        <when test="parentPath != null">
+          and parent_path = #{parentPath,jdbcType=VARCHAR}
+        </when>
+        <otherwise>
+          and parent_path = ''
+        </otherwise>
+      </choose>
+    </where>
+    order by property_index
+  </select>
+  
+  <select id="selectByParentPath" resultMap="BaseResultMap" parameterType="com.pj.web.model.Property">
+    select
+    <include refid="Base_Column_List" />
+    from t_property
+    where parent_path = #{parentPath,jdbcType=VARCHAR}
+    <if test="status != null">
+      and status = #{status,jdbcType=INTEGER}
+    </if>
+    <if test="propertyKey != null">
+      and property_key = #{propertyKey,jdbcType=VARCHAR}
+    </if>
+    <if test="propertyName != null">
+      and property_name = #{propertyName,jdbcType=VARCHAR}
+    </if>
+    order by property_index
+  </select>
+  
+  <update id="updateByDisable" parameterType="com.pj.web.model.Property">
+    update t_property
+    set status = #{status,jdbcType=INTEGER}
+    where (parent_path = #{parentPath,jdbcType=VARCHAR} and property_name = #{propertyName,jdbcType=VARCHAR})
+    or parent_path like concat(#{parentPath,jdbcType=VARCHAR}, '.', #{propertyName,jdbcType=VARCHAR}, '%')
+  </update>
+  
+  <select id="selectBySelective" resultMap="BaseResultMap" parameterType="map">
+    select 
+    <include refid="Base_Column_List" />
+    	from t_property
+    	<where>
+    		 <if test="model.id != null">
+    		 	and id = #{model.id,jdbcType=INTEGER}
+    		 </if>
+    		 <if test="model.parentPath != null">
+    		 	and parent_path = #{model.parentPath,jdbcType=VARCHAR}
+    		 </if>
+			 <if test="model.propertyName != null" >
+		       and property_name = #{model.propertyName,jdbcType=VARCHAR}
+		     </if>
+		     <if test="model.propertyKey != null" >
+		       and property_key = #{model.propertyKey,jdbcType=VARCHAR}
+		     </if>
+		     <if test="model.propertyValue != null" >
+		       and property_value = #{model.propertyValue,jdbcType=VARCHAR}
+		     </if>
+		     <if test="model.propertyIndex != null" >
+		       and property_index = #{model.propertyIndex,jdbcType=INTEGER}
+		     </if>
+		     <if test="model.status != null" >
+		       and status = #{model.status,jdbcType=INTEGER}
+		     </if>
+    	</where>
+  </select>
+</mapper>

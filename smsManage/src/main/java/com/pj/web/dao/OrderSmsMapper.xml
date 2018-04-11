@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.OrderSmsMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.OrderSms" >
+    <id column="order_sms_id" property="orderSmsId" jdbcType="BIGINT" />
+    <result column="order_system_unique_id" property="orderSystemUniqueId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="sms_content_id" property="smsContentId" jdbcType="CHAR" />
+    <result column="module_id" property="moduleId" jdbcType="BIGINT" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="error_msg_code" property="errorMsgCode" jdbcType="INTEGER" />
+    <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="complete_time" property="completeTime" jdbcType="TIMESTAMP" />
+    <result column="set_send_time" property="setSendTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="delivered_part" property="deliveredPart" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_sms_id, order_system_unique_id, user_id, sms_content_id, module_id, phone, 
+    status, error_msg_code, send_time, complete_time, set_send_time, create_time, delivered_part
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order_sms
+    where order_sms_id = #{orderSmsId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_order_sms
+    where order_sms_id = #{orderSmsId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.OrderSms" >
+    insert into t_order_sms (order_sms_id, order_system_unique_id, user_id, 
+      sms_content_id, module_id, phone, 
+      status, error_msg_code, send_time, 
+      complete_time, set_send_time, create_time, 
+      delivered_part)
+    values (#{orderSmsId,jdbcType=BIGINT}, #{orderSystemUniqueId,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, 
+      #{smsContentId,jdbcType=CHAR}, #{moduleId,jdbcType=BIGINT}, #{phone,jdbcType=CHAR}, 
+      #{status,jdbcType=INTEGER}, #{errorMsgCode,jdbcType=INTEGER}, #{sendTime,jdbcType=TIMESTAMP}, 
+      #{completeTime,jdbcType=TIMESTAMP}, #{setSendTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{deliveredPart,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.OrderSms" >
+    insert into t_order_sms
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderSmsId != null" >
+        order_sms_id,
+      </if>
+      <if test="orderSystemUniqueId != null" >
+        order_system_unique_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="smsContentId != null" >
+        sms_content_id,
+      </if>
+      <if test="moduleId != null" >
+        module_id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="errorMsgCode != null" >
+        error_msg_code,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="completeTime != null" >
+        complete_time,
+      </if>
+      <if test="setSendTime != null" >
+        set_send_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="deliveredPart != null" >
+        delivered_part,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderSmsId != null" >
+        #{orderSmsId,jdbcType=BIGINT},
+      </if>
+      <if test="orderSystemUniqueId != null" >
+        #{orderSystemUniqueId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="smsContentId != null" >
+        #{smsContentId,jdbcType=CHAR},
+      </if>
+      <if test="moduleId != null" >
+        #{moduleId,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="errorMsgCode != null" >
+        #{errorMsgCode,jdbcType=INTEGER},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null" >
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="setSendTime != null" >
+        #{setSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveredPart != null" >
+        #{deliveredPart,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.OrderSms" >
+    update t_order_sms
+    <set >
+      <if test="orderSystemUniqueId != null" >
+        order_system_unique_id = #{orderSystemUniqueId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="smsContentId != null" >
+        sms_content_id = #{smsContentId,jdbcType=CHAR},
+      </if>
+      <if test="moduleId != null" >
+        module_id = #{moduleId,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="errorMsgCode != null" >
+        error_msg_code = #{errorMsgCode,jdbcType=INTEGER},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null" >
+        complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="setSendTime != null" >
+        set_send_time = #{setSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveredPart != null" >
+        delivered_part = #{deliveredPart,jdbcType=TINYINT},
+      </if>
+    </set>
+    where order_sms_id = #{orderSmsId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.OrderSms" >
+    update t_order_sms
+    set order_system_unique_id = #{orderSystemUniqueId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=INTEGER},
+      sms_content_id = #{smsContentId,jdbcType=CHAR},
+      module_id = #{moduleId,jdbcType=BIGINT},
+      phone = #{phone,jdbcType=CHAR},
+      status = #{status,jdbcType=INTEGER},
+      error_msg_code = #{errorMsgCode,jdbcType=INTEGER},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
+      complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      set_send_time = #{setSendTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delivered_part = #{deliveredPart,jdbcType=TINYINT}
+    where order_sms_id = #{orderSmsId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+    	order_sms_id, order_system_unique_id, user_id, sms_content_id, module_id, phone, 
+    	status, error_msg_code, 
+    	DATE_FORMAT(send_time, '%Y-%m-%d %H:%i:%s') send_time,
+    	DATE_FORMAT(complete_time, '%Y-%m-%d %H:%i:%s') complete_time,
+    	set_send_time, create_time, delivered_part
+    FROM
+      t_order_sms
+	<where>
+	  <if test="phone != null">
+          AND phone = #{phone,jdbcType=CHAR}
+      </if>
+      <if test="orderSystemUniqueId != null">
+          AND order_system_unique_id = #{orderSystemUniqueId,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null">
+          AND user_id = #{userId,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+          AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="sendTimeBegin != null" >
+		  AND send_time <![CDATA[ >= ]]> str_to_date(concat(#{sendTimeBegin,jdbcType=VARCHAR}, ' 00:00:00'), '%Y-%m-%d %H:%i:%S')
+	  </if>
+	  <if test="sendTimeEnd != null" >
+		  AND send_time <![CDATA[ < ]]> str_to_date(concat(#{sendTimeEnd,jdbcType=VARCHAR}, ' 23:59:59'), '%Y-%m-%d %H:%i:%S')
+	  </if>
+	  <if test="completeTimeBegin != null" >
+		  AND complete_time <![CDATA[ >= ]]> str_to_date(concat(#{completeTimeBegin,jdbcType=VARCHAR}, ' 00:00:00'), '%Y-%m-%d %H:%i:%S')
+	  </if>
+	  <if test="completeTimeEnd != null" >
+		  AND complete_time <![CDATA[ >= ]]> str_to_date(concat(#{completeTimeEnd,jdbcType=VARCHAR}, ' 00:00:00'), '%Y-%m-%d %H:%i:%S')
+	  </if>
+     </where>
+    ORDER BY order_sms_id DESC
+  </select>
+  
+  <!-- 根据用户和状态获取昨天的账单 -->
+  <select id="selectSumByYesterday" parameterType="map" resultType="java.lang.Long">
+  	select 
+  	 SUM(delivered_part)
+    from t_order_sms
+    <where>
+	    <if test="userId != null">
+	    	and user_id = #{userId,jdbcType=INTEGER}
+	    </if>
+	    <if test="sendTime != null">
+	    	and send_time <![CDATA[ >= ]]> str_to_date(concat(#{sendTime,jdbcType=VARCHAR}, ' 00:00:00'), '%Y-%m-%d %H:%i:%S') 
+	    	and send_time <![CDATA[ < ]]> str_to_date(concat(#{sendTime,jdbcType=VARCHAR}, ' 23:59:59'), '%Y-%m-%d %H:%i:%S')
+	    </if>
+    </where>
+  </select>
+</mapper>

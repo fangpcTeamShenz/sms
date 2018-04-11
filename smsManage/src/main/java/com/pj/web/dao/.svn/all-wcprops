@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/JAVA/!svn/ver/15896/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao
+END
+PermissionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/PermissionMapper.java
+END
+ModuleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/JAVA/!svn/ver/15325/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ModuleMapper.java
+END
+ErrorMsgMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/JAVA/!svn/ver/15851/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ErrorMsgMapper.xml
+END
+UserMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/JAVA/!svn/ver/16194/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/UserMapper.java
+END
+SmsSignatureMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/JAVA/!svn/ver/15824/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/SmsSignatureMapper.xml
+END
+UserRoleMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/JAVA/!svn/ver/15265/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/UserRoleMapper.xml
+END
+ChannelMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/JAVA/!svn/ver/15337/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ChannelMapper.java
+END
+RouteForceMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/JAVA/!svn/ver/15893/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/RouteForceMapper.xml
+END
+RouteForceMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/JAVA/!svn/ver/15325/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/RouteForceMapper.java
+END
+RolePermissionMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/JAVA/!svn/ver/15265/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/RolePermissionMapper.xml
+END
+OrderSmsMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/JAVA/!svn/ver/15857/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/OrderSmsMapper.xml
+END
+ModuleMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/JAVA/!svn/ver/15904/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ModuleMapper.xml
+END
+ProductMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/JAVA/!svn/ver/15893/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ProductMapper.xml
+END
+SmsUpstreamMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/JAVA/!svn/ver/15417/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/SmsUpstreamMapper.java
+END
+UserBillMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/JAVA/!svn/ver/15817/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/UserBillMapper.xml
+END
+SmsTemplateMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/JAVA/!svn/ver/15325/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/SmsTemplateMapper.java
+END
+SmsTemplateMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/JAVA/!svn/ver/15824/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/SmsTemplateMapper.xml
+END
+ChargeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/JAVA/!svn/ver/15683/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ChargeMapper.xml
+END
+RoleMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/JAVA/!svn/ver/15265/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/RoleMapper.xml
+END
+ProductMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/JAVA/!svn/ver/15325/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ProductMapper.java
+END
+OrderSmsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/JAVA/!svn/ver/15875/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/OrderSmsMapper.java
+END
+RolePermissionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/RolePermissionMapper.java
+END
+UserCompanyInfoMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/JAVA/!svn/ver/15708/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/UserCompanyInfoMapper.xml
+END
+ChannelMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/JAVA/!svn/ver/15558/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ChannelMapper.xml
+END
+UserRoleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/UserRoleMapper.java
+END
+UserCompanyInfoMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/JAVA/!svn/ver/15411/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/UserCompanyInfoMapper.java
+END
+SmsSignatureMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/JAVA/!svn/ver/15325/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/SmsSignatureMapper.java
+END
+UserMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/JAVA/!svn/ver/16194/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/UserMapper.xml
+END
+ErrorMsgMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/JAVA/!svn/ver/15851/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ErrorMsgMapper.java
+END
+RoleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/RoleMapper.java
+END
+PermissionMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/JAVA/!svn/ver/15265/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/PermissionMapper.xml
+END
+PropertyMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/JAVA/!svn/ver/15239/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/PropertyMapper.java
+END
+ChargeMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/JAVA/!svn/ver/15333/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/ChargeMapper.java
+END
+UserBillMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/JAVA/!svn/ver/15351/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/UserBillMapper.java
+END
+SmsUpstreamMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/JAVA/!svn/ver/15904/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/SmsUpstreamMapper.xml
+END
+PropertyMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/JAVA/!svn/ver/15333/smsPlatform/smsPj/smsManage/src/main/java/com/pj/web/dao/PropertyMapper.xml
+END

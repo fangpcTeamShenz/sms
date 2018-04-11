@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.ErrorMsgMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.ErrorMsg" >
+    <id column="error_msg_code" property="errorMsgCode" jdbcType="INTEGER" />
+    <result column="error_msg_text" property="errorMsgText" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    error_msg_code, error_msg_text
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_error_msg
+    where error_msg_code = #{errorMsgCode,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_error_msg
+    where error_msg_code = #{errorMsgCode,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.ErrorMsg" >
+    insert into t_error_msg (error_msg_code, error_msg_text)
+    values (#{errorMsgCode,jdbcType=INTEGER}, #{errorMsgText,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.ErrorMsg" >
+    insert into t_error_msg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="errorMsgCode != null" >
+        error_msg_code,
+      </if>
+      <if test="errorMsgText != null" >
+        error_msg_text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="errorMsgCode != null" >
+        #{errorMsgCode,jdbcType=INTEGER},
+      </if>
+      <if test="errorMsgText != null" >
+        #{errorMsgText,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.ErrorMsg" >
+    update t_error_msg
+    <set >
+      <if test="errorMsgText != null" >
+        error_msg_text = #{errorMsgText,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where error_msg_code = #{errorMsgCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.ErrorMsg" >
+    update t_error_msg
+    set error_msg_text = #{errorMsgText,jdbcType=VARCHAR}
+    where error_msg_code = #{errorMsgCode,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 根据error_msg_code集合批量 -->
+  <select id="selectByCodes" parameterType="map" resultMap="BaseResultMap">
+  	select
+    	 <include refid="Base_Column_List" />
+    from t_error_msg 
+    where error_msg_code in
+    <foreach collection="codes" item="code" open="(" close=")" separator=",">
+	    #{code,jdbcType=INTEGER}
+	</foreach>
+  </select>
+</mapper>

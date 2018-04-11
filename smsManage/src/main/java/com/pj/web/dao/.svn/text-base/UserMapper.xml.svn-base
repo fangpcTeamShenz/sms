@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.web.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.pj.web.model.User">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="username" jdbcType="CHAR" property="username" />
+    <result column="nickname" jdbcType="CHAR" property="nickname" />
+    <result column="password" jdbcType="CHAR" property="password" />
+    <result column="linkman" jdbcType="CHAR" property="linkman" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="email" jdbcType="CHAR" property="email" />
+    <result column="balance" jdbcType="BIGINT" property="balance" />
+    <result column="credit_amount" jdbcType="BIGINT" property="creditAmount" />
+    <result column="alert_balance" jdbcType="BIGINT" property="alertBalance" />
+    <result column="alert_phone" jdbcType="CHAR" property="alertPhone" />
+    <result column="notify_send" jdbcType="INTEGER" property="notifySend" />
+    <result column="appsecret" jdbcType="CHAR" property="appsecret" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="upstream_url" jdbcType="CHAR" property="upstreamUrl" />
+    <result column="ext_number" jdbcType="CHAR" property="extNumber" />
+    <result column="notify_url" jdbcType="CHAR" property="notifyUrl" />
+    <result column="cmpp_pwd" jdbcType="CHAR" property="cmppPwd" />
+    <result column="cmpp_spid" jdbcType="CHAR" property="cmppSpid" />
+    <result column="last_login_ip" jdbcType="CHAR" property="lastLoginIp" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="keyword_white" jdbcType="VARCHAR" property="keywordWhite" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, username, nickname, password, linkman, phone, email, balance, credit_amount, 
+    alert_balance, alert_phone, notify_send, appsecret, user_type, upstream_url, ext_number, 
+    notify_url, cmpp_pwd, cmpp_spid, last_login_ip, last_login_time,keyword_white
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.User">
+    insert into t_user (user_id, username, nickname, 
+      password, linkman, phone, email, 
+      balance, credit_amount, alert_balance, 
+      alert_phone, notify_send, appsecret, 
+      user_type, upstream_url, ext_number, 
+      notify_url, cmpp_pwd, cmpp_spid, 
+      last_login_ip, last_login_time,keyword_white
+      )
+    values (#{userId,jdbcType=BIGINT}, #{username,jdbcType=CHAR}, #{nickname,jdbcType=CHAR}, 
+      #{password,jdbcType=CHAR}, #{linkman,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{email,jdbcType=CHAR}, 
+      #{balance,jdbcType=BIGINT}, #{creditAmount,jdbcType=BIGINT}, #{alertBalance,jdbcType=BIGINT}, 
+      #{alertPhone,jdbcType=CHAR}, #{notifySend,jdbcType=INTEGER}, #{appsecret,jdbcType=CHAR}, 
+      #{userType,jdbcType=INTEGER}, #{upstreamUrl,jdbcType=CHAR}, #{extNumber,jdbcType=CHAR}, 
+      #{notifyUrl,jdbcType=CHAR}, #{cmppPwd,jdbcType=CHAR}, #{cmppSpid,jdbcType=CHAR}, 
+      #{lastLoginIp,jdbcType=CHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{keywordWhite,jdbcType=varchar}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.User" useGeneratedKeys="true" keyProperty="userId">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="linkman != null">
+        linkman,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="creditAmount != null">
+        credit_amount,
+      </if>
+      <if test="alertBalance != null">
+        alert_balance,
+      </if>
+      <if test="alertPhone != null">
+        alert_phone,
+      </if>
+      <if test="notifySend != null">
+        notify_send,
+      </if>
+      <if test="appsecret != null">
+        appsecret,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="upstreamUrl != null">
+        upstream_url,
+      </if>
+      <if test="extNumber != null">
+        ext_number,
+      </if>
+      <if test="notifyUrl != null">
+        notify_url,
+      </if>
+      <if test="cmppPwd != null">
+        cmpp_pwd,
+      </if>
+      <if test="cmppSpid != null">
+        cmpp_spid,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="keywordWhite != null">
+        keyword_white,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=CHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=CHAR},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=BIGINT},
+      </if>
+      <if test="creditAmount != null">
+        #{creditAmount,jdbcType=BIGINT},
+      </if>
+      <if test="alertBalance != null">
+        #{alertBalance,jdbcType=BIGINT},
+      </if>
+      <if test="alertPhone != null">
+        #{alertPhone,jdbcType=CHAR},
+      </if>
+      <if test="notifySend != null">
+        #{notifySend,jdbcType=INTEGER},
+      </if>
+      <if test="appsecret != null">
+        #{appsecret,jdbcType=CHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="upstreamUrl != null">
+        #{upstreamUrl,jdbcType=CHAR},
+      </if>
+      <if test="extNumber != null">
+        #{extNumber,jdbcType=CHAR},
+      </if>
+      <if test="notifyUrl != null">
+        #{notifyUrl,jdbcType=CHAR},
+      </if>
+      <if test="cmppPwd != null">
+        #{cmppPwd,jdbcType=CHAR},
+      </if>
+      <if test="cmppSpid != null">
+        #{cmppSpid,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="keywordWhite != null">
+        #{keywordWhite,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.User">
+    update t_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=CHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=CHAR},
+      </if>
+      <if test="linkman != null">
+        linkman = #{linkman,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=CHAR},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=BIGINT},
+      </if>
+      <if test="creditAmount != null">
+        credit_amount = #{creditAmount,jdbcType=BIGINT},
+      </if>
+      <if test="alertBalance != null">
+        alert_balance = #{alertBalance,jdbcType=BIGINT},
+      </if>
+      <if test="alertPhone != null">
+        alert_phone = #{alertPhone,jdbcType=CHAR},
+      </if>
+      <if test="notifySend != null">
+        notify_send = #{notifySend,jdbcType=INTEGER},
+      </if>
+      <if test="appsecret != null">
+        appsecret = #{appsecret,jdbcType=CHAR},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="upstreamUrl != null">
+        upstream_url = #{upstreamUrl,jdbcType=CHAR},
+      </if>
+      <if test="extNumber != null">
+        ext_number = #{extNumber,jdbcType=CHAR},
+      </if>
+      <if test="notifyUrl != null">
+        notify_url = #{notifyUrl,jdbcType=CHAR},
+      </if>
+      <if test="cmppPwd != null">
+        cmpp_pwd = #{cmppPwd,jdbcType=CHAR},
+      </if>
+      <if test="cmppSpid != null">
+        cmpp_spid = #{cmppSpid,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip = #{lastLoginIp,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="keywordWhite != null">
+        keyword_white = #{keywordWhite,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.User">
+    update t_user
+    set username = #{username,jdbcType=CHAR},
+      nickname = #{nickname,jdbcType=CHAR},
+      password = #{password,jdbcType=CHAR},
+      linkman = #{linkman,jdbcType=CHAR},
+      phone = #{phone,jdbcType=CHAR},
+      email = #{email,jdbcType=CHAR},
+      balance = #{balance,jdbcType=BIGINT},
+      credit_amount = #{creditAmount,jdbcType=BIGINT},
+      alert_balance = #{alertBalance,jdbcType=BIGINT},
+      alert_phone = #{alertPhone,jdbcType=CHAR},
+      notify_send = #{notifySend,jdbcType=INTEGER},
+      appsecret = #{appsecret,jdbcType=CHAR},
+      user_type = #{userType,jdbcType=INTEGER},
+      upstream_url = #{upstreamUrl,jdbcType=CHAR},
+      ext_number = #{extNumber,jdbcType=CHAR},
+      notify_url = #{notifyUrl,jdbcType=CHAR},
+      cmpp_pwd = #{cmppPwd,jdbcType=CHAR},
+      cmpp_spid = #{cmppSpid,jdbcType=CHAR},
+      last_login_ip = #{lastLoginIp,jdbcType=CHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      keyword_white = #{keywordWhite,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+    
+  <select id="selectBySelective" parameterType="map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    	from t_user
+    	<where>
+    		 <if test="model.username != null">
+    		 	and username = #{model.username,jdbcType=VARCHAR}
+    		 </if>
+    		 <if test="model.nickname != null">
+    		 	and nickname = #{model.nickname,jdbcType=VARCHAR}
+    		 </if>
+    		 <if test="model.phone != null">
+    		 	and phone = #{model.phone,jdbcType=VARCHAR}
+    		 </if>
+			 <if test="model.password != null">
+		       and password = #{model.password,jdbcType=VARCHAR}
+		     </if>
+			 <if test="model.userType != null">
+		       and user_type = #{model.userType,jdbcType=INTEGER}
+		     </if>
+			 <if test="model.notifySend != null">
+		       and notify_send = #{model.notifySend,jdbcType=INTEGER}
+		     </if>
+    	</where>
+    	order by user_id desc
+  </select>
+  
+  <select id="selectListBySelective" parameterType="map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    	from t_user
+    	<where>
+			 <if test="model.userType != null">
+		       and user_type = #{model.userType,jdbcType=INTEGER}
+		     </if>
+    	</where>
+    	order by user_id desc
+  </select>
+  
+  <select id="selectByUsername" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByNickname" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where nickname = #{nickname,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPhone" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where phone = #{phone,jdbcType=VARCHAR}
+  </select>
+    
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+      u.user_id as id,
+      u.username,u.linkman,u.balance,u.credit_amount as creditAmount,
+      u.nickname,u.alert_balance as alertBalance,u.alert_phone as alertPhone,
+      u.phone,u.notify_send as notifySend,u.appsecret,u.upstream_url as upstreamUrl,
+      u.ext_number as extNumber,u.notify_url as notifyUrl,u.cmpp_pwd as cmppPwd,u.cmpp_spid as cmppSpid,
+      u.email,DATE_FORMAT(u.last_login_time, '%Y-%m-%d %H:%i:%s') lastLoginTime
+    FROM
+      t_user u
+	<where>
+      <if test="username != null">
+        AND u.username like CONCAT('%', #{username,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="linkman != null">
+        AND u.linkman like CONCAT('%', #{linkman,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="phone != null">
+        AND u.phone like CONCAT('%', #{phone,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="nickname != null">
+        AND u.nickname like CONCAT('%', #{nickname,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="email != null">
+        AND u.email like CONCAT('%', #{email,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="userType != null">
+      	AND u.user_type = #{userType,jdbcType=INTEGER}
+      </if>
+     </where>
+    ORDER BY u.user_id DESC
+  </select>
+  
+  <select id="selectByParams" parameterType="map" resultType="map">
+    SELECT
+      u.user_id,
+      u.linkman,
+	  u.balance,
+      u.username,
+      u.nickname,
+      u.phone,
+      u.email,
+      u.credit_amount as creditAmount,
+      u.alert_balance as alertBalance,
+      u.alert_phone as alertPhone,
+      IFNULL(f_property('business.group.groupType',u.group_id) ,"无用户组") as groupName,
+      DATE_FORMAT(u.last_login_time, '%Y-%m-%d %H:%i:%s') lastLoginTime
+    FROM
+      t_user u
+	<where>
+      	AND u.user_type = 0
+      <if test="nickname != null">
+        AND u.nickname like CONCAT('%', #{nickname,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="minBal != null">
+        AND u.alert_balance <![CDATA[>=]]> #{minBal,jdbcType=DECIMAL}
+      </if>
+      <if test="maxBal != null">
+        AND u.alert_balance <![CDATA[<=]]> #{maxBal,jdbcType=DECIMAL}
+      </if>
+     </where>
+    ORDER BY u.user_id DESC
+  </select>
+  
+  <select id="selectSmsUserByPageList" parameterType="map" resultType="map">
+    SELECT
+      u.user_id as id,
+      u.linkman,
+	  u.balance,
+      u.username,
+      u.nickname,
+      u.phone,
+      u.email,
+      u.credit_amount as creditAmount,
+      u.alert_balance as alertBalance,
+      u.alert_phone as alertPhone,
+      u.upstream_url as upstreamUrl,
+      DATE_FORMAT(u.last_login_time, '%Y-%m-%d %H:%i:%s') lastLoginTime
+    FROM
+      t_user u
+	<where>
+      	AND u.user_type = 0
+      <if test="username != null">
+        AND u.username like CONCAT('%', #{username,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="linkman != null">
+        AND u.linkman like CONCAT('%', #{linkman,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="nickname != null">
+        AND u.nickname like CONCAT('%', #{nickname,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="phone != null">
+        AND u.phone like CONCAT('%', #{phone,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="minBal != null">
+        AND u.balance <![CDATA[>=]]> #{minBal,jdbcType=DECIMAL}
+      </if>
+      <if test="maxBal != null">
+        AND u.balance <![CDATA[<=]]> #{maxBal,jdbcType=DECIMAL}
+      </if>
+     </where>
+    ORDER BY u.user_id DESC
+  </select>
+  
+  <select id="selectList" parameterType="map" resultMap="BaseResultMap">
+    select
+    	<include refid="Base_Column_List" />
+    from t_user 
+    <where>
+      <if test="userType != null">
+        AND user_type = #{userType,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY user_id DESC
+  </select>
+  
+  <select id="selectByAlertBalanceNotify" parameterType="map" resultMap="BaseResultMap">
+  	  select
+    	 <include refid="Base_Column_List" />
+       from t_user 
+      where alert_balance <![CDATA[>=]]> balance
+      <if test="userType != null">
+      	 and user_type = #{userType,jdbcType=INTEGER}
+      </if>
+      <if test="notifySend  != null">
+      	 and notify_send = #{notifySend,jdbcType=INTEGER}
+      </if>
+  </select>
+  <update id="updateNotifySend">
+  	UPDATE t_user SET notify_send = 0 WHERE balance &gt; alert_balance AND notify_send &gt; 0
+  </update>
+  
+  <!-- 根据userId集合批量huo -->
+  <select id="selectByUserIds" parameterType="map" resultMap="BaseResultMap">
+  	select
+    	 <include refid="Base_Column_List" />
+    from t_user 
+    where user_id in
+    <foreach collection="userIds" item="userId" open="(" close=")" separator=",">
+	    #{userId,jdbcType=BIGINT}
+	</foreach>
+  </select>
+</mapper>

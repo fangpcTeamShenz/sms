@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.web.dao.ModuleMapper">
+  <resultMap id="BaseResultMap" type="com.pj.web.model.Module">
+    <id column="module_id" jdbcType="BIGINT" property="moduleId" />
+    <result column="channel_id" jdbcType="BIGINT" property="channelId" />
+    <result column="module_name" jdbcType="CHAR" property="moduleName" />
+    <result column="module_url" jdbcType="VARCHAR" property="moduleUrl" />
+    <result column="module_key" jdbcType="CHAR" property="moduleKey" />
+    <result column="useable" jdbcType="TINYINT" property="useable" />
+    <result column="ext_number" jdbcType="CHAR" property="extNumber" />
+    <result column="memo" jdbcType="CHAR" property="memo" />
+    <result column="identity_code" jdbcType="CHAR" property="identityCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    module_id, channel_id, module_name, module_url, module_key, useable, ext_number, 
+    memo,identity_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_module
+    where module_id = #{moduleId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_module
+    where module_id = #{moduleId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.Module">
+    insert into t_module (module_id, channel_id, module_name, 
+      module_url, module_key, useable, 
+      ext_number, memo,identity_code)
+    values (#{moduleId,jdbcType=BIGINT}, #{channelId,jdbcType=BIGINT}, #{moduleName,jdbcType=CHAR}, 
+      #{moduleUrl,jdbcType=VARCHAR}, #{moduleKey,jdbcType=CHAR}, #{useable,jdbcType=TINYINT}, 
+      #{extNumber,jdbcType=CHAR}, #{memo,jdbcType=CHAR}, #{identityCode,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.Module">
+    insert into t_module
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="moduleId != null">
+        module_id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="moduleName != null">
+        module_name,
+      </if>
+      <if test="moduleUrl != null">
+        module_url,
+      </if>
+      <if test="moduleKey != null">
+        module_key,
+      </if>
+      <if test="useable != null">
+        useable,
+      </if>
+      <if test="extNumber != null">
+        ext_number,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+      <if test="identityCode != null">
+        identity_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="moduleId != null">
+        #{moduleId,jdbcType=BIGINT},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="moduleName != null">
+        #{moduleName,jdbcType=CHAR},
+      </if>
+      <if test="moduleUrl != null">
+        #{moduleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleKey != null">
+        #{moduleKey,jdbcType=CHAR},
+      </if>
+      <if test="useable != null">
+        #{useable,jdbcType=TINYINT},
+      </if>
+      <if test="extNumber != null">
+        #{extNumber,jdbcType=CHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=CHAR},
+      </if>
+      <if test="identityCode != null">
+        #{identityCode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.Module">
+    update t_module
+    <set>
+      <if test="channelId != null">
+        channel_id = #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="moduleName != null">
+        module_name = #{moduleName,jdbcType=CHAR},
+      </if>
+      <if test="moduleUrl != null">
+        module_url = #{moduleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleKey != null">
+        module_key = #{moduleKey,jdbcType=CHAR},
+      </if>
+      <if test="useable != null">
+        useable = #{useable,jdbcType=TINYINT},
+      </if>
+      <if test="extNumber != null">
+        ext_number = #{extNumber,jdbcType=CHAR},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=CHAR},
+      </if>
+      <if test="identityCode != null">
+        identity_code = #{identityCode,jdbcType=CHAR},
+      </if>
+    </set>
+    where module_id = #{moduleId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.Module">
+    update t_module
+    set channel_id = #{channelId,jdbcType=BIGINT},
+      module_name = #{moduleName,jdbcType=CHAR},
+      module_url = #{moduleUrl,jdbcType=VARCHAR},
+      module_key = #{moduleKey,jdbcType=CHAR},
+      useable = #{useable,jdbcType=TINYINT},
+      ext_number = #{extNumber,jdbcType=CHAR},
+      memo = #{memo,jdbcType=CHAR},
+      identity_code = #{identityCode,jdbcType=CHAR}
+    where module_id = #{moduleId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectList" parameterType="map" resultMap="BaseResultMap">
+    select
+    	<include refid="Base_Column_List" />
+    from t_module 
+    <where>
+      <if test="useable != null">
+       	and useable = #{useable,jdbcType=TINYINT}
+      </if>
+    </where>
+    ORDER BY module_id DESC
+  </select>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+    	m.module_id as moduleId, m.channel_id as channelId, m.module_name as moduleName, 
+    	m.module_url as moduleUrl, m.module_key as moduleKey, m.useable, m.ext_number as extNumber, 
+    	m.memo, c.channel_name as channelName,identity_code as identityCode
+    FROM
+      t_module m
+      left join t_channel c on m.channel_id = c.channel_id
+	<where>
+	  <if test="channelName != null">
+        AND c.channel_name like CONCAT('%', #{channelName,jdbcType=VARCHAR}, '%')
+      </if>
+	  <if test="moduleName != null">
+        AND m.module_name like CONCAT('%', #{moduleName,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="useable != null">
+        AND m.useable = #{useable,jdbcType=INTEGER}
+      </if>
+     </where>
+    ORDER BY m.module_id DESC
+  </select>
+</mapper>

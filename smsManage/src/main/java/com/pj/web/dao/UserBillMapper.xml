@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.UserBillMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.UserBill" >
+    <id column="bill_id" property="billId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="fee_type" property="feeType" jdbcType="INTEGER" />
+    <result column="after_amount" property="afterAmount" jdbcType="INTEGER" />
+    <result column="memo" property="memo" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bill_id, user_id, fee_type, after_amount, memo, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_bill
+    where bill_id = #{billId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_user_bill
+    where bill_id = #{billId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.UserBill" >
+    insert into t_user_bill (bill_id, user_id, fee_type, 
+      after_amount, memo, create_time
+      )
+    values (#{billId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{feeType,jdbcType=INTEGER}, 
+      #{afterAmount,jdbcType=INTEGER}, #{memo,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.UserBill" >
+    insert into t_user_bill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        bill_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="feeType != null" >
+        fee_type,
+      </if>
+      <if test="afterAmount != null" >
+        after_amount,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        #{billId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="feeType != null" >
+        #{feeType,jdbcType=INTEGER},
+      </if>
+      <if test="afterAmount != null" >
+        #{afterAmount,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.UserBill" >
+    update t_user_bill
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="feeType != null" >
+        fee_type = #{feeType,jdbcType=INTEGER},
+      </if>
+      <if test="afterAmount != null" >
+        after_amount = #{afterAmount,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where bill_id = #{billId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.UserBill" >
+    update t_user_bill
+    set user_id = #{userId,jdbcType=BIGINT},
+      fee_type = #{feeType,jdbcType=INTEGER},
+      after_amount = #{afterAmount,jdbcType=INTEGER},
+      memo = #{memo,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where bill_id = #{billId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+    	b.bill_id as billId , b.user_id as userId, b.fee_type as feeType, b.after_amount as afterAmount, b.memo, u.username,
+    	DATE_FORMAT(b.create_time, '%Y-%m-%d %H:%i:%s') createTime, u.nickname
+    FROM
+      t_user_bill b
+      left join t_user u on u.user_id = b.user_id
+	<where>
+	  <if test="username != null">
+        AND u.username like CONCAT('%', #{username,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="feeType != null">
+        AND b.fee_type = #{feeType,jdbcType=INTEGER}
+      </if>
+      <if test="userId != null">
+        AND b.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+     </where>
+    ORDER BY b.bill_id DESC
+  </select>
+  
+  <select id="selectBySelective" parameterType="map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    	from t_user_bill
+    	<where>
+    	      <if test="model.userId != null" >
+		        and user_id = #{model.userId,jdbcType=BIGINT}
+		      </if>
+		      <if test="model.feeType != null" >
+		        and fee_type = #{model.feeType,jdbcType=INTEGER}
+		      </if>
+		      <if test="model.afterAmount != null" >
+		        and after_amount = #{model.afterAmount,jdbcType=INTEGER}
+		      </if>
+		      <if test="model.memo != null" >
+		        and memo = #{model.memo,jdbcType=CHAR}
+		      </if>
+		      <if test="model.createTime != null" >
+		        and create_time = #{model.createTime,jdbcType=TIMESTAMP}
+		      </if>
+    	</where>
+    	order by bill_id desc
+  </select>
+</mapper>

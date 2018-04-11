@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.RouteForceMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.RouteForce" >
+    <id column="rotue_id" property="rotueId" jdbcType="BIGINT" />
+    <result column="route_name" property="routeName" jdbcType="CHAR" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="channel_id" property="channelId" jdbcType="BIGINT" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="useable" property="useable" jdbcType="INTEGER" />
+    <result column="rate" property="rate" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rotue_id, route_name, product_id, channel_id, priority, useable, rate, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_route_force
+    where rotue_id = #{rotueId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_route_force
+    where rotue_id = #{rotueId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.RouteForce" >
+    insert into t_route_force (rotue_id, route_name, product_id, 
+      channel_id, priority, useable, 
+      rate, user_id)
+    values (#{rotueId,jdbcType=BIGINT}, #{routeName,jdbcType=CHAR}, #{productId,jdbcType=BIGINT}, 
+      #{channelId,jdbcType=BIGINT}, #{priority,jdbcType=INTEGER}, #{useable,jdbcType=INTEGER}, 
+      #{rate,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.RouteForce" >
+    insert into t_route_force
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rotueId != null" >
+        rotue_id,
+      </if>
+      <if test="routeName != null" >
+        route_name,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="channelId != null" >
+        channel_id,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="useable != null" >
+        useable,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rotueId != null" >
+        #{rotueId,jdbcType=BIGINT},
+      </if>
+      <if test="routeName != null" >
+        #{routeName,jdbcType=CHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="useable != null" >
+        #{useable,jdbcType=INTEGER},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.RouteForce" >
+    update t_route_force
+    <set >
+      <if test="routeName != null" >
+        route_name = #{routeName,jdbcType=CHAR},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="channelId != null" >
+        channel_id = #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="useable != null" >
+        useable = #{useable,jdbcType=INTEGER},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where rotue_id = #{rotueId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.RouteForce" >
+    update t_route_force
+    set route_name = #{routeName,jdbcType=CHAR},
+      product_id = #{productId,jdbcType=BIGINT},
+      channel_id = #{channelId,jdbcType=BIGINT},
+      priority = #{priority,jdbcType=INTEGER},
+      useable = #{useable,jdbcType=INTEGER},
+      rate = #{rate,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT}
+    where rotue_id = #{rotueId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectList" resultMap="BaseResultMap" parameterType="map">
+    select
+    	<include refid="Base_Column_List" />
+    from t_route_force 
+    <where>
+      <if test="useable != null" >
+       and useable = #{useable,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY rotue_id DESC
+  </select>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+    	f.rotue_id as rotueId, f.route_name as routeName, f.product_id as productId, f.channel_id as channelId, 
+    	f.priority, f.useable, f.rate, f.user_id as user_id,
+    	p.product_name as productName,c.channel_name as channelName,u.username,u.nickname
+    FROM
+      t_route_force f
+      left join t_channel c on f.channel_id = c.channel_id
+      left join t_product p on p.product_id = f.product_id
+      left join t_user u on u.user_id = f.user_id
+	<where>
+	  <if test="routeName != null">
+        AND f.route_name like CONCAT('%', #{routeName,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="useable != null">
+        AND f.useable = #{useable,jdbcType=INTEGER}
+      </if>
+      <if test="channelName != null">
+        AND c.channel_name like CONCAT('%', #{channelName,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="productName != null">
+        AND p.product_name like CONCAT('%', #{productName,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="username != null">
+        AND u.username like CONCAT('%', #{username,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="userId != null">
+        AND f.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+     </where>
+    ORDER BY f.route_name,f.rotue_id DESC
+  </select>
+  
+</mapper>

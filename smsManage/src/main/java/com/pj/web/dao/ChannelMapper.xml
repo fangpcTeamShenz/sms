@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.ChannelMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.Channel" >
+    <id column="channel_id" property="channelId" jdbcType="BIGINT" />
+    <result column="channel_name" property="channelName" jdbcType="CHAR" />
+    <result column="useable" property="useable" jdbcType="TINYINT" />
+    <result column="exist_callback" property="existCallback" jdbcType="TINYINT" />
+    <result column="exist_upper" property="existUpper" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    channel_id, channel_name, useable, exist_callback, exist_upper
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_channel
+    where channel_id = #{channelId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_channel
+    where channel_id = #{channelId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.Channel" >
+    insert into t_channel (channel_id, channel_name, useable, 
+      exist_callback, exist_upper)
+    values (#{channelId,jdbcType=BIGINT}, #{channelName,jdbcType=CHAR}, #{useable,jdbcType=TINYINT}, 
+      #{existCallback,jdbcType=TINYINT}, #{existUpper,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.Channel" >
+    insert into t_channel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="channelId != null" >
+        channel_id,
+      </if>
+      <if test="channelName != null" >
+        channel_name,
+      </if>
+      <if test="useable != null" >
+        useable,
+      </if>
+      <if test="existCallback != null" >
+        exist_callback,
+      </if>
+      <if test="existUpper != null" >
+        exist_upper,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="channelId != null" >
+        #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="channelName != null" >
+        #{channelName,jdbcType=CHAR},
+      </if>
+      <if test="useable != null" >
+        #{useable,jdbcType=TINYINT},
+      </if>
+      <if test="existCallback != null" >
+        #{existCallback,jdbcType=TINYINT},
+      </if>
+      <if test="existUpper != null" >
+        #{existUpper,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.Channel" >
+    update t_channel
+    <set >
+      <if test="channelName != null" >
+        channel_name = #{channelName,jdbcType=CHAR},
+      </if>
+      <if test="useable != null" >
+        useable = #{useable,jdbcType=TINYINT},
+      </if>
+      <if test="existCallback != null" >
+        exist_callback = #{existCallback,jdbcType=TINYINT},
+      </if>
+      <if test="existUpper != null" >
+        exist_upper = #{existUpper,jdbcType=TINYINT},
+      </if>
+    </set>
+    where channel_id = #{channelId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.Channel" >
+    update t_channel
+    set channel_name = #{channelName,jdbcType=CHAR},
+      useable = #{useable,jdbcType=TINYINT},
+      exist_callback = #{existCallback,jdbcType=TINYINT},
+      exist_upper = #{existUpper,jdbcType=TINYINT}
+    where channel_id = #{channelId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+    	c.channel_id as channelId, c.channel_name as channelName, c.useable, 
+    	c.exist_callback as existCallback, c.exist_upper as existUpper
+    FROM
+      t_channel c
+	<where>
+	  <if test="channelName != null">
+        AND c.channel_name like CONCAT('%', #{channelName,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="useable != null">
+        AND c.useable = #{useable,jdbcType=TINYINT}
+      </if>
+      <if test="existCallback != null">
+        AND c.exist_callback = #{existCallback,jdbcType=TINYINT}
+      </if>
+      <if test="existUpper != null">
+        AND c.exist_upper = #{existUpper,jdbcType=TINYINT}
+      </if>
+     </where>
+    ORDER BY c.channel_id DESC
+  </select>
+  
+  <select id="selectBySelective" parameterType="map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    	from t_channel
+    	<where>
+	      <if test="model.channelName != null" >
+	        and channel_name = #{model.channelName,jdbcType=CHAR}
+	      </if>
+	      <if test="model.useable != null" >
+	        and useable = #{model.useable,jdbcType=TINYINT}
+	      </if>
+	      <if test="model.existCallback != null" >
+	        and exist_callback = #{model.existCallback,jdbcType=TINYINT}
+	      </if>
+	      <if test="model.existUpper != null" >
+	        and exist_upper = #{model.existUpper,jdbcType=TINYINT}
+	      </if>
+    	</where>
+    	order by channel_id desc
+  </select>
+</mapper>

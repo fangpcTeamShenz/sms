@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pj.web.dao.ChargeMapper" >
+  <resultMap id="BaseResultMap" type="com.pj.web.model.Charge" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="trade_number" property="tradeNumber" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="amout" property="amout" jdbcType="DECIMAL" />
+    <result column="charge_amount" property="chargeAmount" jdbcType="BIGINT" />
+    <result column="gift_amount" property="giftAmount" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="memo" property="memo" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, trade_number, user_id, amout, charge_amount, gift_amount, status, memo, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_charge
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_charge
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pj.web.model.Charge" >
+    insert into t_charge (id, trade_number, user_id, 
+      amout, charge_amount, gift_amount, 
+      status, memo, create_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{tradeNumber,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, 
+      #{amout,jdbcType=DECIMAL}, #{chargeAmount,jdbcType=BIGINT}, #{giftAmount,jdbcType=BIGINT}, 
+      #{status,jdbcType=INTEGER}, #{memo,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pj.web.model.Charge" >
+    insert into t_charge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tradeNumber != null" >
+        trade_number,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="amout != null" >
+        amout,
+      </if>
+      <if test="chargeAmount != null" >
+        charge_amount,
+      </if>
+      <if test="giftAmount != null" >
+        gift_amount,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tradeNumber != null" >
+        #{tradeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="amout != null" >
+        #{amout,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeAmount != null" >
+        #{chargeAmount,jdbcType=BIGINT},
+      </if>
+      <if test="giftAmount != null" >
+        #{giftAmount,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pj.web.model.Charge" >
+    update t_charge
+    <set >
+      <if test="tradeNumber != null" >
+        trade_number = #{tradeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="amout != null" >
+        amout = #{amout,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeAmount != null" >
+        charge_amount = #{chargeAmount,jdbcType=BIGINT},
+      </if>
+      <if test="giftAmount != null" >
+        gift_amount = #{giftAmount,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pj.web.model.Charge" >
+    update t_charge
+    set trade_number = #{tradeNumber,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      amout = #{amout,jdbcType=DECIMAL},
+      charge_amount = #{chargeAmount,jdbcType=BIGINT},
+      gift_amount = #{giftAmount,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      memo = #{memo,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByPageList" parameterType="map" resultType="map">
+    SELECT
+      c.id, c.trade_number as tradeNumber, c.user_id as userId, c.amout, c.charge_amount as chargeAmount,
+       c.gift_amount as giftAmount, c.status, c.memo,u.username,u.nickname,
+      DATE_FORMAT(c.create_time, '%Y-%m-%d %H:%i:%s') createTime
+    FROM
+      t_charge c
+      left join t_user u on u.user_id = c.user_id
+	<where>
+	  <if test="username != null">
+        AND u.username like CONCAT('%', #{username,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="userId != null">
+        AND c.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null">
+        AND c.status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="tradeNumber != null">
+        AND c.trade_number like CONCAT('%', #{tradeNumber,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="userId != null">
+        AND c.user_id = #{userId,jdbcType=BIGINT}
+      </if>
+     </where>
+    ORDER BY c.id DESC
+  </select>
+</mapper>

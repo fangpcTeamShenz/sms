@@ -1,0 +1,58 @@
+10
+
+dir
+15903
+http://svn.sy666.com:5555/svn/JAVA/smsPlatform/smsPj/smsManage/src/main/webapp/assets
+http://svn.sy666.com:5555/svn/JAVA
+
+
+
+2018-02-26T00:57:28.627000Z
+15844
+xiao.tao
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bd34d56d-32ae-4446-ba2d-ff83e241ea91
+
+avatars
+dir
+
+css
+dir
+
+download
+dir
+
+dragsort
+dir
+
+font
+dir
+
+fonts
+dir
+
+images
+dir
+
+img
+dir
+
+js
+dir
+
+tempFiles
+dir
+

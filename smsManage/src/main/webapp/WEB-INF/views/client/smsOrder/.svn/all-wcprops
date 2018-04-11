@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/JAVA/!svn/ver/15896/smsPlatform/smsPj/smsManage/src/main/webapp/WEB-INF/views/client/smsOrder
+END
+list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/JAVA/!svn/ver/16194/smsPlatform/smsPj/smsManage/src/main/webapp/WEB-INF/views/client/smsOrder/list.jsp
+END
+sendSms.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/JAVA/!svn/ver/16194/smsPlatform/smsPj/smsManage/src/main/webapp/WEB-INF/views/client/smsOrder/sendSms.jsp
+END
+import.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/JAVA/!svn/ver/16133/smsPlatform/smsPj/smsManage/src/main/webapp/WEB-INF/views/client/smsOrder/import.jsp
+END

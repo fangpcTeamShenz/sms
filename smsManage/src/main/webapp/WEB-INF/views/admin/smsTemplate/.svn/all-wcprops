@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/JAVA/!svn/ver/15761/smsPlatform/smsPj/smsManage/src/main/webapp/WEB-INF/views/admin/smsTemplate
+END
+edit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/JAVA/!svn/ver/16194/smsPlatform/smsPj/smsManage/src/main/webapp/WEB-INF/views/admin/smsTemplate/edit.jsp
+END
+audit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/JAVA/!svn/ver/16194/smsPlatform/smsPj/smsManage/src/main/webapp/WEB-INF/views/admin/smsTemplate/audit.jsp
+END
+list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/JAVA/!svn/ver/16194/smsPlatform/smsPj/smsManage/src/main/webapp/WEB-INF/views/admin/smsTemplate/list.jsp
+END
+add.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/JAVA/!svn/ver/16194/smsPlatform/smsPj/smsManage/src/main/webapp/WEB-INF/views/admin/smsTemplate/add.jsp
+END

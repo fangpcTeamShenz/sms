@@ -1,0 +1,263 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap
+END
+.csscomb.json
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/.csscomb.json
+END
+grid.less
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/grid.less
+END
+wells.less
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/wells.less
+END
+tables.less
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/tables.less
+END
+dropdowns.less
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/dropdowns.less
+END
+responsive-embed.less
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/responsive-embed.less
+END
+.csslintrc
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/.csslintrc
+END
+type.less
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/type.less
+END
+close.less
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/close.less
+END
+alerts.less
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/alerts.less
+END
+badges.less
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/badges.less
+END
+navs.less
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/navs.less
+END
+button-groups.less
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/button-groups.less
+END
+glyphicons.less
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/glyphicons.less
+END
+popovers.less
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/popovers.less
+END
+bootstrap.less
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/bootstrap.less
+END
+normalize.less
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/normalize.less
+END
+scaffolding.less
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/scaffolding.less
+END
+jumbotron.less
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/jumbotron.less
+END
+theme.less
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/theme.less
+END
+thumbnails.less
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/thumbnails.less
+END
+modals.less
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/modals.less
+END
+media.less
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/media.less
+END
+tooltip.less
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/tooltip.less
+END
+pager.less
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/pager.less
+END
+buttons.less
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/buttons.less
+END
+progress-bars.less
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/progress-bars.less
+END
+carousel.less
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/carousel.less
+END
+labels.less
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/labels.less
+END
+component-animations.less
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/component-animations.less
+END
+pagination.less
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/pagination.less
+END
+variables.less
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/variables.less
+END
+input-groups.less
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/input-groups.less
+END
+mixins.less
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/mixins.less
+END
+responsive-utilities.less
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/responsive-utilities.less
+END
+breadcrumbs.less
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/breadcrumbs.less
+END
+navbar.less
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/navbar.less
+END
+list-group.less
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/list-group.less
+END
+panels.less
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/panels.less
+END
+forms.less
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/forms.less
+END
+code.less
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/code.less
+END
+print.less
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/print.less
+END
+utilities.less
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/webapp/assets/css/less/bootstrap/utilities.less
+END

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/JAVA/!svn/ver/15879/smsPlatform/smsPj/smsManage/src/main/resources
+END
+application-pro.properties
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/JAVA/!svn/ver/15834/smsPlatform/smsPj/smsManage/src/main/resources/application-pro.properties
+END
+spring-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/JAVA/!svn/ver/15265/smsPlatform/smsPj/smsManage/src/main/resources/spring-mvc.xml
+END
+mybatis-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/JAVA/!svn/ver/15265/smsPlatform/smsPj/smsManage/src/main/resources/mybatis-config.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/resources/log4j.properties
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/JAVA/!svn/ver/15265/smsPlatform/smsPj/smsManage/src/main/resources/applicationContext.xml
+END
+ehcache.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/JAVA/!svn/ver/15879/smsPlatform/smsPj/smsManage/src/main/resources/ehcache.xml
+END
+application-dev.properties
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/JAVA/!svn/ver/15851/smsPlatform/smsPj/smsManage/src/main/resources/application-dev.properties
+END
+applicationContext-shiro.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/resources/applicationContext-shiro.xml
+END
+ehcache-shiro.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/JAVA/!svn/ver/15235/smsPlatform/smsPj/smsManage/src/main/resources/ehcache-shiro.xml
+END

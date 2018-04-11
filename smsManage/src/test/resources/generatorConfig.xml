@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 配置Run As Maven build : Goals 参数 : mybatis-generator:generate -Dmybatis.generator.overwrite=true -->
+<!-- 配置 tableName,使用 Run As Maven build 生成 dao model 层 -->
+<generatorConfiguration>
+    <!-- 配置文件路径 -->
+    <properties url="${mybatis.generator.generatorConfig.properties}"/>
+
+    <!--数据库驱动包路径 -->
+    <classPathEntry location="${drive.class.path}"/>
+
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <!--关闭注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--数据库连接信息 -->
+        <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}" userId="${jdbc.username}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <!--生成的model 包路径 -->
+        <javaModelGenerator targetPackage="${model.package}" targetProject="${target.project}">
+            <property name="enableSubPackages" value="ture"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成xml mapper文件 路径 -->
+        <sqlMapGenerator targetPackage="${xml.mapper.package}" targetProject="${target.project}">
+            <property name="enableSubPackages" value="ture"/>
+        </sqlMapGenerator>
+
+        <!-- 生成的Dao接口 的包路径 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${dao.package}" targetProject="${target.project}">
+            <property name="enableSubPackages" value="ture"/>
+        </javaClientGenerator>
+
+        <!--对应数据库表名
+		<table schema="general" tableName="t_user" domainObjectName="User"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_role" domainObjectName="Role"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_permission" domainObjectName="Permission"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_role_permission" domainObjectName="RolePermission"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_user_role" domainObjectName="UserRole"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_port" domainObjectName="Port"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="tcharge" domainObjectName="Charge"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_fixline_spuid" domainObjectName="FixlineSpuid"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_tmall_refund" domainObjectName="TmallRefund"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_aliqin_split" domainObjectName="AliqinSplit"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_logger" domainObjectName="Logger"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_cookie" domainObjectName="Cookie"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_tmall_trade" domainObjectName="TmallTrade"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_task" domainObjectName="Task"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_tmallmodfiyprice" domainObjectName="TmallModfiyPrice"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_tmall_after_trade" domainObjectName="TmallAfterTrade"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_tmall_flow_kpi" domainObjectName="TmallFlowKpi"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_tmall_flow_sku_kpi" domainObjectName="TmallFlowSkuKpi"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+		<table schema="general" tableName="t_tmall_order_info" domainObjectName="TmallOrderInfo"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+	    <table schema="general" tableName="t_tmall_card" domainObjectName="TmallCard"
+	    	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    	enableSelectByExample="false" selectByExampleQueryId="false" >
+	    </table>
+	    <table schema="general" tableName="t_tmall_card_package" domainObjectName="TmallCardPackage"
+	    	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    	enableSelectByExample="false" selectByExampleQueryId="false" >
+	    </table>-->
+		<table schema="general" tableName="t_error_msg" domainObjectName="ErrorMsg"
+		    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		    enableSelectByExample="false" selectByExampleQueryId="false" >
+		</table>
+    </context>
+</generatorConfiguration>

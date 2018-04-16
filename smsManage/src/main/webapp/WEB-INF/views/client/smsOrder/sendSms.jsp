@@ -229,7 +229,20 @@ var ajaxSubmit = function(){
 			data: data,
 			dataType: 'json',
 			success: function(data) {
-				app.alert(data.data);
+				if(data.status == "SUCCESS"){
+					bootbox.confirm({ 
+					    size: 'small',
+					    title: '<i class="ace-icon fa fa-exclamation-triangle red"></i> 提示',
+					    message: data.data, 
+					    callback: function(result){
+					    	if (result) {
+					    		window.location.reload();
+					    	}
+					    }
+					});
+				}else{
+					app.alert(data.data);
+				}
 			},
 			error: function(msg) {
 				app.alert('系统异常，请稍后再试');
